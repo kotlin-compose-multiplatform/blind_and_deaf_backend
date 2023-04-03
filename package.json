@@ -30,7 +30,6 @@
     "pg-format": "^1.0.4",
     "pg-promise": "^10.11.1",
     "request-ip": "^2.2.0",
-    "sharp": "^0.30.6",
     "socket.io": "^4.5.1",
     "swagger-jsdoc": "^6.2.1",
     "swagger-ui-express": "^4.4.0",
