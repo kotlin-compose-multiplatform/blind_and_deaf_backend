@@ -1,8 +1,8 @@
-import express from 'express';
-import {badRequest, response} from "../../modules/response.mjs";
-import {db} from "../../modules/database/connection.mjs";
-import {deleteNews, getFilesById} from "../../modules/query/admin.mjs";
+import express from "express";
 import fs from "fs";
+import { db } from "../../modules/database/connection.mjs";
+import { deleteNews, getFilesById } from "../../modules/query/admin.mjs";
+import { badRequest, response } from "../../modules/response.mjs";
 
 const deleteNewsRouter = express.Router();
 
@@ -22,6 +22,7 @@ deleteNewsRouter.delete('/:id', async (req, res) => {
                             res.json(response(false,'success',id));
                         })
                         .catch(err=>{
+                            console.log(err,'1');
                             badRequest(req,res);
                         })
                 } else {
@@ -29,6 +30,7 @@ deleteNewsRouter.delete('/:id', async (req, res) => {
                 }
             })
             .catch(err=>{
+                console.log(err,'2');
                 badRequest(req,res);
             })
     }
