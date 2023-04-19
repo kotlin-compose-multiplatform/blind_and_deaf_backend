@@ -4,16 +4,16 @@ import { loginRouter } from "./auth/login.mjs";
 import { addCertificate } from "./certificate/add-certificate.mjs";
 import { deleteCertificate } from "./certificate/delete-certificate.mjs";
 import { getCertificate } from "./certificate/get-certificate.mjs";
+import { addInbox } from "./client/add-inbox.mjs";
+import { getnewsClient } from "./client/get-news.mjs";
+import { getSingleClient } from "./client/get-single.mjs";
+import { searchRouter } from "./client/search.mjs";
 import { getInbox } from "./inbox/get-inbox.mjs";
 import { addNewsRouter } from "./news/add-news.mjs";
 import { deleteNewsRouter } from "./news/delete-news.mjs";
 import { editNewsRouter } from "./news/edit-news.mjs";
 import { getnews } from "./news/get-news.mjs";
 import { getStat } from "./stat/get-stat.mjs";
-import {getnewsClient} from "./client/get-news.mjs";
-import {searchRouter} from "./client/search.mjs";
-import {getSingleClient} from "./client/get-single.mjs";
-import {addInbox} from "./client/add-inbox.mjs";
 
 const router=express.Router();
 

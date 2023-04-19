@@ -6,7 +6,7 @@ import { badRequest, response } from "../../modules/response.mjs";
 
 const deleteNewsRouter = express.Router();
 
-deleteNewsRouter.delete('/:id', async (req, res) => {
+deleteNewsRouter.patch('/:id', async (req, res) => {
     if (typeof req.params === 'undefined' || req.params == null) {
         badRequest(req, res);
     } else {

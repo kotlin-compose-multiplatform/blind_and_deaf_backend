@@ -1,12 +1,12 @@
-import express from 'express';
-import {badRequest, response} from "../../modules/response.mjs";
-import {db} from "../../modules/database/connection.mjs";
-import {deleteCertificateQuery, getSingleCertificateQuery} from "../../modules/query/admin.mjs";
+import express from "express";
 import fs from "fs";
+import { db } from "../../modules/database/connection.mjs";
+import { deleteCertificateQuery, getSingleCertificateQuery } from "../../modules/query/admin.mjs";
+import { badRequest, response } from "../../modules/response.mjs";
 
 const deleteCertificate = express.Router();
 
-deleteCertificate.delete('/:id', async (req, res) => {
+deleteCertificate.patch('/:id', async (req, res) => {
     if (typeof req.body === 'undefined' || req.body == null) {
         badRequest(req, res);
     } else {
