@@ -25,10 +25,12 @@ deleteCertificate.patch('/:id', async (req, res) => {
                             badRequest(req,res);
                         })
                 } else {
+                    console.log(result);
                     badRequest(req,res);
                 }
             })
             .catch(err=>{
+                console.log(err);
                 badRequest(req,res);
             })
     }
