@@ -3,7 +3,7 @@ SELECT n.*,
 (SELECT array_to_json(array_agg(f.*)) FROM files f WHERE f.parent_id=n.id AND f.url!='') AS files,
 (SELECT f.url FROM files f WHERE f.parent_id=n.id AND f.mime_type='1' LIMIT 1) AS first_image
 FROM news n 
-WHERE n.is_project=false ORDER BY n.priority DESC, n.created_at DESC
+WHERE n.is_project=false AND n.is_product=false ORDER BY n.priority DESC, n.created_at DESC
 LIMIT 3;
 `;
 
@@ -12,7 +12,7 @@ SELECT (SELECT array_to_json(array_agg(f.*)) FROM files f WHERE f.parent_id=n.id
 (SELECT f.url FROM files f WHERE f.parent_id=n.id AND f.mime_type='1' LIMIT 1) AS first_image,
 (SELECT f.url FROM files f WHERE f.parent_id=n.id AND f.mime_type='0' LIMIT 1) AS video_file
 FROM news n 
-WHERE n.is_project=true ORDER BY n.created_at DESC
+WHERE n.is_project=true AND n.is_product=false ORDER BY n.created_at DESC
 LIMIT 5;
 `;
 
