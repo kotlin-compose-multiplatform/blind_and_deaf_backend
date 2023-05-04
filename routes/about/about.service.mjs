@@ -1,6 +1,6 @@
-import multer from 'multer';
-import {db} from "../../modules/database/connection.mjs";
-import {badRequest} from "../../modules/response.mjs";
+import multer from "multer";
+import { db } from "../../modules/database/connection.mjs";
+import { badRequest } from "../../modules/response.mjs";
 
 // Set up Multer for file uploads
 const storage = multer.diskStorage({
@@ -89,7 +89,7 @@ export const deleteAbout = async (req, res) => {
 }
 
 export const getAboutItems = (req, res) => {
-    db.query(`SELECT * FROM public.about_us ORDER BY id DESC`)
+    db.query(`SELECT * FROM public.about_us ORDER BY id`)
         .then(result=>{
             res.json(result.rows);
         })
