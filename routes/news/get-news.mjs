@@ -1,8 +1,8 @@
-import express from 'express';
-import {badRequest, response} from "../../modules/response.mjs";
-import {db} from "../../modules/database/connection.mjs";
-import {getNewsQuery, getNewsQueryCount} from "../../modules/query/admin.mjs";
-import {verifyToken} from "../../modules/auth/token.mjs";
+import express from "express";
+import { verifyToken } from "../../modules/auth/token.mjs";
+import { db } from "../../modules/database/connection.mjs";
+import { getNewsQuery, getNewsQueryCount } from "../../modules/query/admin.mjs";
+import { badRequest, response } from "../../modules/response.mjs";
 
 const getnews = express.Router();
 
@@ -18,7 +18,7 @@ getnews.get('/', verifyToken,async (req, res) => {
         } = req.query;
         db.query(getNewsQuery,[is_project,limit,page,is_product])
             .then(result=>{
-                db.query(getNewsQueryCount,[is_project])
+                db.query(getNewsQueryCount,[is_project,is_product])
                     .then(res2=>{
                         let page_count = Math.ceil(res2.rows.length / limit);
                         if (page_count <= 0) {
