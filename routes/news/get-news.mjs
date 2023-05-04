@@ -13,9 +13,10 @@ getnews.get('/', verifyToken,async (req, res) => {
         const {
             limit,
             page,
-            is_project
+            is_project,
+            is_product
         } = req.query;
-        db.query(getNewsQuery,[is_project,limit,page])
+        db.query(getNewsQuery,[is_project,limit,page,is_product])
             .then(result=>{
                 db.query(getNewsQueryCount,[is_project])
                     .then(res2=>{

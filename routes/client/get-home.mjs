@@ -6,12 +6,13 @@ import { badRequest, response } from "../../modules/response.mjs";
 const getHomeRouter=express.Router();
 
 getHomeRouter.get('/',(req,res)=>{
-    db.query(`${getLatestNewsQuery} ${getOurProjectsHome} ${getCertificateHomeQuery}`)
+    db.query(`${getLatestNewsQuery} ${getOurProjectsHome} ${getCertificateHomeQuery} SELECT * FROM public.about_us ORDER BY id DESC;`)
     .then(result=>{
         res.json(response(false,'success',{
             latest_news:result[0].rows,
             our_projects:result[1].rows,
             get_certificates:result[2].rows,
+            about_data: result[3].rows
         }));
         res.end();
     })

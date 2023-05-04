@@ -14,6 +14,7 @@ import { deleteNewsRouter } from "./news/delete-news.mjs";
 import { editNewsRouter } from "./news/edit-news.mjs";
 import { getnews } from "./news/get-news.mjs";
 import { getStat } from "./stat/get-stat.mjs";
+import aboutController from "./about/about.controller.mjs";
 
 const router=express.Router();
 
@@ -32,5 +33,6 @@ router.use('/get-client-news',getnewsClient);
 router.use('/search',searchRouter);
 router.use('/get-single',getSingleClient);
 router.use('/add-inbox',addInbox);
+router.use('/about',aboutController);
 
 export default router;

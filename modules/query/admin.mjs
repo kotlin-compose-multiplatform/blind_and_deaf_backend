@@ -7,7 +7,7 @@ SELECT n.*,
 (SELECT array_to_json(array_agg(f.*)) FROM files f WHERE f.parent_id=n.id AND f.url!='') AS files,
 (SELECT f.url FROM files f WHERE f.parent_id=n.id AND f.mime_type='1' LIMIT 1) AS first_image
 FROM news n 
-WHERE n.is_project=$1 ORDER BY n.created_at DESC
+WHERE n.is_project=$1 AND n.is_product=$4 ORDER BY n.created_at DESC
 LIMIT $2 OFFSET ($3 - 1) * $2;
 `;
 
@@ -16,13 +16,13 @@ SELECT n.*,
 (SELECT array_to_json(array_agg(f.*)) FROM files f WHERE f.parent_id=n.id AND f.url!='') AS files,
 (SELECT f.url FROM files f WHERE f.parent_id=n.id AND f.mime_type='1' LIMIT 1) AS first_image
 FROM news n 
-WHERE n.is_project=$1 ORDER BY n.created_at DESC
+WHERE n.is_project=$1 AND n.is_product=$2 ORDER BY n.created_at DESC
 `;
 
 export const addNewsQuery=`
 INSERT INTO news(
-    title_tm, title_ru, title_en, content_tm, content_ru, content_en, views, is_project)
-    VALUES ($1,$2,$3,$4, $5, $6, 0,$7) RETURNING *;
+    title_tm, title_ru, title_en, content_tm, content_ru, content_en, views, is_project,is_product)
+    VALUES ($1,$2,$3,$4, $5, $6, 0,$7,$8) RETURNING *;
 `;
 
 export const addFilesQuery=`

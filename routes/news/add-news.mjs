@@ -65,7 +65,8 @@ const addNewsFunction=async(req,res)=>{
             content_tm,
             content_ru,
             content_en,
-            is_project
+            is_project,
+            is_product
         } = req.body;
         let video = '';
         let images = [];
@@ -84,7 +85,7 @@ const addNewsFunction=async(req,res)=>{
             })
         }
 
-        db.query(addNewsQuery,[title_tm,title_ru,title_en,content_tm,content_ru,content_en,is_project])
+        db.query(addNewsQuery,[title_tm,title_ru,title_en,content_tm,content_ru,content_en,is_project,is_product])
             .then(result=>{
                 if(result.rows.length){
                     let insertedId = result.rows[0].id;

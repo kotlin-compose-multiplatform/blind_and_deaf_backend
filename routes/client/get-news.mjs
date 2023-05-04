@@ -13,11 +13,12 @@ getnewsClient.get('/',async (req, res) => {
         const {
             limit,
             page,
-            is_project
+            is_project,
+            is_product
         } = req.query;
-        db.query(getNewsQuery,[is_project,limit,page])
+        db.query(getNewsQuery,[is_project,limit,page,is_product])
             .then(result=>{
-                db.query(getNewsQueryCount,[is_project])
+                db.query(getNewsQueryCount,[is_project,is_product])
                     .then(res2=>{
                         let page_count = Math.ceil(res2.rows.length / limit);
                         if (page_count <= 0) {
