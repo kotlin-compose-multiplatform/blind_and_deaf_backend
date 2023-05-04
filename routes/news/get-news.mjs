@@ -28,12 +28,14 @@ getnews.get('/', verifyToken,async (req, res) => {
                     })
                     .catch(err=>{
                         console.log(err);
-                        badRequest(req,res);
+                        res.status(500).json(err);
+                        // badRequest(req,res);
                     })
             })
             .catch(err=>{
                 console.log(err);
-                badRequest(req,res);
+                res.status(500).json(err);
+                // badRequest(req,res);
             })
     }
 })
