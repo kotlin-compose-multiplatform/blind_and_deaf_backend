@@ -4,10 +4,10 @@ const Pool = PG.Pool;
 
 const pool = new Pool({
     user: 'postgres',
-    host: '127.0.0.1',
+    host: 'localhost',
     database: 'blind_deaf',
     password: 'QwertyWeb123',
-    port: '5433',
+    port: '5432',
 });
 
 export const db = pool;
