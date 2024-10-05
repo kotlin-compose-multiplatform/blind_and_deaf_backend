@@ -35,8 +35,8 @@ app.use(
 app.use("/api", router);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 
-const server = app.listen(7096, () => {
-  console.log(`listening on port 7096`);
+const server = app.listen(5005, () => {
+  console.log(`listening on port 5005`);
 });
 
 const io = new Server(server, {
